@@ -1,0 +1,166 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-oabi-master
+  labels:
+    name: mysql-oabi-master
+spec:
+  ports:
+  - port: 3306
+    targetPort: 3306
+  type: NodePort
+  selector:
+    name: mysql-oabi-master
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: mysql-oabi-master
+spec:
+  storageClassName: nfs-dynamic-class1
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: djcps-database-outuser
+  labels:
+    name: djcps-database-outuser
+spec:
+  ports:
+  - port: 3306
+    targetPort: 3306
+  type: NodePort
+  selector:
+    name: mysql-oabi-master
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: djcps-database-tms
+  labels:
+    name: djcps-database-tms
+spec:
+  ports:
+  - port: 3306
+    targetPort: 3306
+  type: NodePort
+  selector:
+    name: mysql-oabi-master
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: djcps-database-pa
+  labels:
+    name: djcps-database-oa
+spec:
+  ports:
+  - port: 3306
+    targetPort: 3306
+  type: NodePort
+  selector:
+    name: mysql-oabi-master
+---
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: djcps-database-xxljob
+  labels:
+    name: djcps-database-xxljob
+spec:
+  ports:
+  - port: 3306
+    targetPort: 3306
+  type: NodePort
+  selector:
+    name: mysql-oabi-master
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: djcps-database-numserver
+  labels:
+    name: djcps-database-numserver
+spec:
+  ports:
+  - port: 3306
+    targetPort: 3306
+  type: NodePort
+  selector:
+    name: mysql-oabi-master
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: djcps-database-djpay
+  labels:
+    name: djcps-database-djpay
+spec:
+  ports:
+  - port: 3306
+    targetPort: 3306
+  type: NodePort
+  selector:
+    name: mysql-oabi-master
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: djcps-database-bi
+  labels:
+    name: djcps-database-bi
+spec:
+  ports:
+  - port: 3306
+    targetPort: 3306
+  type: NodePort
+  selector:
+    name: mysql-oabi-master
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: djcps-database-djpush
+  labels:
+    name: djcps-database-djpush
+spec:
+  ports:
+  - port: 3306
+    targetPort: 3306
+  type: NodePort
+  selector:
+    name: mysql-oabi-master
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: djcps-database-org
+  labels:
+    name: djcps-database-org
+spec:
+  ports:
+  - port: 3306
+    targetPort: 3306
+  type: NodePort
+  selector:
+    name: mysql-oabi-master
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: djcps-database-wms
+  labels:
+    name: djcps-database-wms
+spec:
+  ports:
+  - port: 3306
+    targetPort: 3306
+  type: NodePort
+  selector:
+    name: mysql-oabi-master

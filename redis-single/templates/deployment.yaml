@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: redis-single
+spec:
+  replicas: 1
+  selector:
+    name: redis-single
+  template:
+    metadata:
+      labels:
+        name: redis-single
+    spec:
+      containers:
+        - name: redis-single
+          image: redis:3.2
+          ports:
+            - containerPort: 6379
+          volumeMounts:
+          - mountPath: /data
+            name: redis-single-data
+      volumes:
+      - name: redis-single-data
+        persistentVolumeClaim:
+          claimName: redis-single

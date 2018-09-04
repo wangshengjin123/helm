@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysqlcrm-master
+  labels:
+    name: mysqlcrm-master
+spec:
+  ports:
+  - port: 3306
+    targetPort: 3306
+  type: NodePort
+  selector:
+    name: mysqlcrm-master
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: djcps-database-crm
+  labels:
+    name: djcps-database-crm
+spec:
+  ports:
+  - port: 8066
+    targetPort: 8066
+  type: NodePort
+  selector:
+    k8s-app: mycat
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: mysqlcrm-master
+spec:
+  storageClassName: nfs-dynamic-class1
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
